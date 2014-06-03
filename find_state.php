@@ -12,13 +12,13 @@ if (!$con) {
     die('Could not connect: ' . mysql_error());
 }
 mysql_select_db('cscdb');
-$query="SELECT state_id,state FROM state WHERE country_id='$country'";
+$query="SELECT ID,name FROM regions WHERE country='$country'";
 $result=mysql_query($query);
 
 ?>
 <select name="state" onchange="getCity(<?php echo $country?>,this.value)">
 <option>Select State</option>
 <?php while ($row=mysql_fetch_array($result)) { ?>
-<option value=<?php echo $row['state_id']?>><?php echo $row['state']?></option>
+<option value=<?php echo $row['ID']?>><?php echo $row['name']?></option>
 <?php } ?>
 </select>
