@@ -2,11 +2,7 @@
 		require_once('Connections/srads.php'); 
 	///// Select Country/City/State
 	mysql_select_db($database_srads, $srads);
-<<<<<<< HEAD
-	$query="SELECT * FROM countries";
-=======
-	$query="SELECT * FROM counties";
->>>>>>> 2c48fea087e888eb592b2a9a07f23e09accb3c65
+	$query="SELECT * FROM countries,";
  	$result = mysql_query($query, $srads) or die(mysql_error());
 ?>
 
