@@ -28,7 +28,7 @@
     			<select name="country" onChange="getState(this.value)" class="validate[required]">
                     <option>Select Country</option>
                     <?php while ($row=mysql_fetch_array($result)) { ?>
-                    <option value=<?php echo $row['country_id']?>><?php echo $row['country']?></option>
+                    <option value=<?php echo $row['code']?>><?php echo $row['name']?></option>
                     <?php } ?>
                 </select>
             </div>
