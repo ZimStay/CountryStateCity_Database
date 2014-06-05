@@ -40,8 +40,7 @@ if (isset($_POST['submit']))
 					$city=$_POST['city'] ;
 					$state=$_POST['state'] ;
 												
-		 mysql_query("INSERT INTO `books`(Title,Author,PublisherName,CopyrightYear) 
-		 VALUES ('$code','$country','$city','$state')"); 
+		 mysql_query("INSERT INTO `cities` VALUES ('$code','$country','$city','$state')"); 
 				
 				
 	        }
@@ -52,20 +51,21 @@ if (isset($_POST['submit']))
 			<?php
 			include("db.php");
 			
-				
-			$result=mysql_query("SELECT code,name FROM countries");
+			$result=mysql_query"SELECT countries.ID, countries.name, cities.ID, cities.name,cities.region,regions.ID,regions.name
+					FROM cities
+					INNER JOIN countries ON countries.ID=cities.ID
+					INNER JOIN regions ON cities.regions=regions.ID";
+			
 			
 			while($test = mysql_fetch_array($result))
 			{
-				$id = $test['ID'];	
+				$id = $test['cities.ID'];	
 				echo "<tr align='center'>";	
-				echo"<td><font color='black'>" .$test['ID']."</font></td>";
-				echo"<td><font color='black'>" .$test['name']."</font></td>";
-				echo"<td><font color='black'>". $test['Author']. "</font></td>";
-				echo"<td><font color='black'>". $test['PublisherName']. "</font></td>";
-				echo"<td><font color='black'>". $test['CopyrightYear']. "</font></td>";	
-				echo"<td> <a href ='view.php?BookID=$id'>Edit</a>";
-				echo"<td> <a href ='del.php?BookID=$id'><center>Delete</center></a>";
+				echo"<td><font color='black'>" .$test['countries.name']."</font></td>";
+				echo"<td><font color='black'>" .$test['cities.name']."</font></td>";
+				echo"<td><font color='black'>". $test['states.name']. "</font></td>";
+				echo"<td> <a href ='view.php?ID=$id'>Edit</a>";
+				echo"<td> <a href ='del.php?ID=$id'><center>Delete</center></a>";
 									
 				echo "</tr>";
 			}
