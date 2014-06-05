@@ -2,7 +2,7 @@
 		require_once('Connections/srads.php'); 
 	///// Select Country/City/State
 	mysql_select_db($database_srads, $srads);
-	$query="SELECT * FROM countries,";
+	$query="SELECT * FROM country";
  	$result = mysql_query($query, $srads) or die(mysql_error());
 ?>
 
@@ -28,7 +28,7 @@
     			<select name="country" onChange="getState(this.value)" class="validate[required]">
                     <option>Select Country</option>
                     <?php while ($row=mysql_fetch_array($result)) { ?>
-                    <option value=<?php echo $row['code']?>><?php echo $row['name']?></option>
+                    <option value=<?php echo $row['country_id']?>><?php echo $row['country']?></option>
                     <?php } ?>
                 </select>
             </div>
@@ -55,5 +55,8 @@
                 </select>
             </div>
         </div>
+
+
+
 </body>
 </html>

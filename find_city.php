@@ -7,12 +7,12 @@
 	
 	///// Select Country/City/State
 	mysql_select_db($database_srads, $srads);
-	$query="SELECT ID,name FROM cities WHERE country='$countryId' AND state_id='$stateId'";
+	$query="SELECT id,city_name FROM city WHERE state_id='$stateId'";
  	$result = mysql_query($query, $srads) or die(mysql_error());
 ?>
 <select name="cities" class="select">
 <option>Select City</option>
 <?php while($row=mysql_fetch_array($result)) { ?>
-<option value="<?php echo $row['ID']?>"><?php echo $row['name']?></option>
+<option value="<?php echo $row['ID']?>"><?php echo $row['city_name']?></option>
 <?php } ?>
 </select>
